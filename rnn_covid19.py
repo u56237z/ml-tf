@@ -6,7 +6,7 @@ import numpy as np
 import math
 
 from sklearn.preprocessing import MinMaxScaler
-from matplotlib import pyplot as plt
+#from matplotlib import pyplot as plt
 
 def get_in_filename():
   dids = json.loads(os.getenv('DIDS', None))
