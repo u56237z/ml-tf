@@ -66,3 +66,11 @@ y_pred = model.predict(X_test).flatten()
 #f1.scatter([x for x in range(0,x_trn_max)],y_train,c="g",label="train")
 #f1.scatter([x+x_trn_max+1 for x in range(0,x_set_max-x_trn_max-20)],[y-(y_pred[0]-y_test[0]) for y in y_pred],c="b",label="pred",alpha=0.2)
 #f1.scatter([x+x_trn_max+1 for x in range(0,x_set_max-x_trn_max-20)],y_test,c="r",label="actual",alpha=0.2)
+
+r=dict()
+
+for i in range(0,len(X_test)):
+  r[i]=(X_test[i].tolist(),y_test[i],y_pred[i]-(y_pred[0]-y_test[0]))
+
+with open('/data/outputs/results', 'w') as results:
+  json.dump(r, results)
