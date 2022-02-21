@@ -9,9 +9,7 @@ from sklearn.preprocessing import MinMaxScaler
 from matplotlib import pyplot as plt
 
 def get_in_filename():
-  dids = os.getenv('DIDS', None)
-
-  dids = json.loads(dids)
+  dids = json.loads(os.getenv('DIDS', None))
 
   for did in dids:
       return f'data/inputs/{did}/0'
