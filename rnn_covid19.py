@@ -1,20 +1,26 @@
 # -*- coding: utf-8 -*-
 import json
-
-f = open("/content/drive/My Drive/Colab Notebooks/dpc-covid19-ita-andamento-nazionale.json")
-
-j = json.load(f)
-
-dec = []
-
-for i in j: dec.append(i['deceduti'])
-
+import os
 import tensorflow as tf
 import numpy as np
 import math
 
 from sklearn.preprocessing import MinMaxScaler
 from matplotlib import pyplot as plt
+
+def get_in_filename():
+  dids = os.getenv('DIDS', None)
+
+  dids = json.loads(dids)
+
+  for did in dids:
+      return f'data/inputs/{did}/0'
+
+j = json.load(open(get_in_filename()))
+
+dec = []
+
+for i in j: dec.append(i['deceduti'])
 
 sc = MinMaxScaler(feature_range=(0,1))
 
