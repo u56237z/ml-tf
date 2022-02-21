@@ -55,14 +55,14 @@ model.compile(optimizer=tf.keras.optimizers.Adam(),
 
 history = model.fit(X_train,y_train,epochs=800,verbose=0)
 
-model.evaluate(X_test,y_test)
+#model.evaluate(X_test,y_test)
 
-y_pred = model.predict(X_test)
+y_pred = model.predict(X_test).flatten()
 
-f = plt.figure(figsize=(22,7))
-
-f1 = f.add_subplot(121)
-
-f1.scatter([x for x in range(0,x_trn_max)],y_train,c="g",label="train")
-f1.scatter([x+x_trn_max+1 for x in range(0,x_set_max-x_trn_max-20)],[y-(y_pred[0]-y_test[0]) for y in y_pred],c="b",label="pred",alpha=0.2)
-f1.scatter([x+x_trn_max+1 for x in range(0,x_set_max-x_trn_max-20)],y_test,c="r",label="actual",alpha=0.2)
+#f = plt.figure(figsize=(22,7))
+#
+#f1 = f.add_subplot(121)
+#
+#f1.scatter([x for x in range(0,x_trn_max)],y_train,c="g",label="train")
+#f1.scatter([x+x_trn_max+1 for x in range(0,x_set_max-x_trn_max-20)],[y-(y_pred[0]-y_test[0]) for y in y_pred],c="b",label="pred",alpha=0.2)
+#f1.scatter([x+x_trn_max+1 for x in range(0,x_set_max-x_trn_max-20)],y_test,c="r",label="actual",alpha=0.2)
