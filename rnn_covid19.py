@@ -68,5 +68,5 @@ r=dict()
 for i in range(0,len(X_test)):
   r[i]=(X_test[i].tolist(),y_test[i],y_pred[i]-(y_pred[0]-y_test[0]))
 
-with open('/data/outputs/results', 'w') as results:
+with open('/data/outputs/result', 'w') as results:
   json.dump(r, results)
