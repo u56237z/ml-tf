@@ -5,9 +5,6 @@ import tensorflow as tf
 import numpy as np
 import math
 
-from sklearn.preprocessing import MinMaxScaler
-#from matplotlib import pyplot as plt
-
 def get_in_filename():
   dids = json.loads(os.getenv('DIDS', None))
 
@@ -20,14 +17,13 @@ dec = []
 
 for i in j: dec.append(i['deceduti'])
 
-sc = MinMaxScaler(feature_range=(0,1))
-
 tf.random.set_seed(42)
 
 x_set_max = len(j)
 x_trn_max = int(x_set_max*0.8)
 
-X_seq = sc.fit_transform(np.reshape(dec,(-1,1)))
+x_res = np.reshape(dec,(-1,1))
+X_seq = (x_res-min(x_res))/(max(x_res)-min(x_res))
 
 X_set = []
 y_set = []
